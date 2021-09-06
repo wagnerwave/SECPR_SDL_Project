@@ -1,25 +1,25 @@
 # Dashboard
-## Sujet
-<p>Réalisation d'une application web, qui contient différents widgets, qui fournissent chacun des informations différentes. De plus
-il fallit mettre en place un sytème d'authentification sur notre application, ainsi que la possibilité de se connecté via des 
-services externes.</p></br>
+## Topic
+<p>Making a web application, which contains different widgets, which each provide different information. In addition
+authentication system on our application, as well as the ability to connect via external services. 
+external services.</p></br>
 
-## Notre projet
-### Choix des technos
-<p>Il y a <b>3 parties</b> distinctes dans le projet, il y a la partie front que nous avons réalisé en <b>ReactJS</b>, la partie back 
-réalisé avec <b>NodeJS</b> et enfin, la base de données, où nous avons utilisé <b>MongoDB</b>.</p></br>
+## Our project
+### Choice of technologies
+<p>There are <b>3 distinct parts</b> in the project, there is the front end that we made with <b>ReactJS</b>, the back end 
+made with <b>NodeJS</b> and finally, the database, where we used <b>MongoDB</b>.</p></br>
 
-### Les widgets
-<p> Chaque widget est indépendant, et utilise sa propre API pour fonctionner.</p>
-* <b>OpenWeatherMap API</b>, via cette API on a pu créer un <b>widget météo</b> qui nous donnes des informations météorologiques pour un endroit donné. L'utilisateur a juste à rentré une ville (ainsi que le pays de cette ville) pour que des informations soient affichés.</br></br>
-* <b>ExchangeRatesAPI</b>, là nous avons mis en place un <b>widget convertisseur de monnaie</b>, nous avons accès à différentes monnaies utilisés dans le monde, en rentrant un nombre celui-ci est convertie dans sa valeur dans l'autre monnaie sélectionnée.</br></br>
-* <b>NewAPI</b>, pour le 3ème widget nous avons décidé de mettre en place un <b>widget news</b>. Le widget nous permet de choisir entre la France, les Etats-Unis, la Grande-Bretagne et la Russie. Il nous fournit ensuite un petit résumé de différentes actualités dans ce pays ainsi qu'un lien vers les articles pour en savoir plus.</br></br>
-* <b>Language Translation API</b>, il nous arrive souvent d'avoir besoin de traduire certains où certaines phrase. C'est pourquoi nous avons un <b>widget de traduction</b>, il détecte la langue utilisé dans le texte entré et nous pouvons ensuite le traduire soit en français, russe, anglais ou espagnol.</br></br>
-* <b>Google Search API</b>, quoi de mieux qu'un <b>widget de recherche</b>, qui nous permet d'avoir accès au moteur de recherche Google et ainsi faire nos recherches directement sur le dashboard. Entrer ce que vous voulez et vous aurez votre réponse ainsi que la possibilité d'être redirigé sur un des sites qui vous intéresse.</br></br>
-* <b>Github API</b>, si vous voulez savoir les followers d'une personne, il ya ce <b>widget de recherche de compte</b>, qui nous permet de savoir quelles personnes suive un compte Github.</br></br>
+### Widgets
+<p>Each widget is independent, and uses its own API to work.</p>
+* <b>OpenWeatherMap API</b>, via this API we were able to create a <b>weather widget</b> that gives us weather information for a given location. The user just has to enter a city (as well as the country of that city) for information to be displayed.</br></br>
+* <b>ExchangeRatesAPI</b>, there we set up a <b>currency converter widget</b>, we have access to different currencies used in the world, by entering a number this one is converted into its value in the other selected currency.</br></br>
+* <b>NewAPI</b>, for the 3rd widget we decided to implement a <b>news widget</b>. The widget allows us to choose between France, USA, UK and Russia. It then provides us with a small summary of different news in that country as well as a link to the articles to learn more.</br></br>
+* <b>Language Translation API</b>, we often need to translate some where some sentences. That's why we have a <b>translation widget</b>, it detects the language used in the text entered and we can then translate it either into French, Russian, English or Spanish.</br></br>
+* <b>Google Search API</b>, what better than a <b>search widget</b>, which allows us to have access to the Google search engine and thus do our searches directly on the dashboard. Enter what you want and you'll get your answer as well as the ability to be redirected to one of the sites that interest you.</br></br>
+* <b>Github API</b>, if you want to know the followers of a person, there is this <b>account search widget</b>, which allows us to know which people follow a Github account.</br></br>
 
-### Les services
-<p> Il a fallu mettre en place, un système d'authentifiation via des services externes, nous en avons trois différents.</p>
-* <b>Google</b>, possibilité de se connecter à son Google.</br></br>
-* <b>Github</b>, possibilité de se connecter à son Github.</br></br>
-* <b>Twitch</b>, possibilité de se connecter à son Twitch.</br></br>
+### Services
+<p> It was necessary to set up an authentication system via external services, we have three different ones.</p>
+* <b>Google</b>, possibility to connect to his Google.</br></br>
+* <b>Github</b>, possibility to connect to his Github.</br></br>
+* <b>Twitch</b>, possibility to connect to his Twitch.</br></br>
