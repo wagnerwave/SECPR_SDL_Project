@@ -1,0 +1,4 @@
+# Git Ignore Files
+data-volume
+node_modules
+test/__pycache__/
