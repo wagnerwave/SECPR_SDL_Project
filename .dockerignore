@@ -1,0 +1,3 @@
+# Docker ignore file
+node_modules
+data-volume
