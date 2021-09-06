@@ -1,0 +1,3 @@
+{
+    "mongoURI":"mongodb://dashboard_db:27017/database"
+}
