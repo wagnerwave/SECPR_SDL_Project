@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 
 // CSS PAGES
 import './App.css';
-// IMPORT PAGES FOR ROUTER
+
+// IMPORT PAGES FOR THE ROUTER
 import Register from './components/Register';
 import NotFoundPage from './components/404';
 import ForbidenAccess from './components/403';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import Admin from './components/Admin';
 
 class App extends React.Component {
     render() {
@@ -19,6 +21,7 @@ class App extends React.Component {
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/admin" component={Admin} />
                     <Route exact path="/404" component={NotFoundPage} />
                     <Route exact path="/403" component={ForbidenAccess} />
                     <Redirect to="404" />

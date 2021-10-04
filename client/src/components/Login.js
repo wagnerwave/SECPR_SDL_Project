@@ -31,7 +31,7 @@ const Login = () => {
             
             switch (res.data) {
                 case 'ok':
-                    let accessToken = jwt.sign({"username": User.username}, SecretToken, {algorithm: "HS256", expiresIn: 120});
+                    let accessToken = jwt.sign({"username": User.username, "role": "user"}, SecretToken, {algorithm: "HS256", expiresIn: 120});
                     cookie.set('jwt', accessToken, { path: '/' });
                     history.push('/dashboard');
                     break;
