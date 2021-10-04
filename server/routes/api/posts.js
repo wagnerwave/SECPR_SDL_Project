@@ -4,6 +4,9 @@ const {check , validationResult} = require('express-validator');
 const router = express.Router();
 const User = require('../../model/Users');
 
+// Add service of status
+const statusService = require('./status/status.service');
+
 // Add Posts
 router.post('/register', [
     check('email', 'Email is required.').not().isEmpty(),
@@ -79,6 +82,11 @@ router.post('/logout', async (req,res) => {
     return;
 });
 
+/**
+ * Method POST & GET to check if the backend works
+ */
+router.post('/status', statusService.statusService);
+router.get('/status', statusService.statusService);
 
 // Delete Post
 module.exports = router;

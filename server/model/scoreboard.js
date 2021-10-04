@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-original_id = ObjectId()
+var original_id = require('mongodb').ObjectID;
 
 const ScoreboardSchema = new mongoose.Schema({
     username:{
