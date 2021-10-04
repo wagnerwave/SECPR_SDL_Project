@@ -1,14 +1,8 @@
 const express = require('express');
-const mongodb = require('mongodb');
-const jwt = require('jsonwebtoken');
 const md5 = require('md5');
-const assert = require('assert');
 const {check , validationResult} = require('express-validator');
 const router = express.Router();
 const User = require('../../model/Users');
-const Cookies = require('universal-cookie');
-const axios = require('axios');
-const fetch = require
 
 // Add Posts
 router.post('/register', [
@@ -26,6 +20,7 @@ async (req,res) => {
     let email = req.body.email;
     let username = req.body.username;
     let password = md5(req.body.password);
+
     try {
         let user = await User.findOne({email: email}).select("email").lean();                                     
         console.log(user);
