@@ -9,10 +9,6 @@ const User = require('../../model/Users');
 const Cookies = require('universal-cookie');
 const axios = require('axios');
 const fetch = require
-<<<<<<< HEAD:server/routes/api/posts.js
-=======
-
->>>>>>> origin/master:server/routes/api/users/users.service.js
 
 // Add Posts
 router.post('/register', [
@@ -30,7 +26,6 @@ async (req,res) => {
     let email = req.body.email;
     let username = req.body.username;
     let password = md5(req.body.password);
-    let GoogleTokenId = "null";
     try {
         let user = await User.findOne({email: email}).select("email").lean();                                     
         console.log(user);
@@ -60,7 +55,7 @@ router.post('/login', [
 ],
 async (req,res) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) {                                                                   
+    if (!errors.isEmptf71dbe52628a3f83a77ab494817525c6y()) {                                                                   
         return res.status(400).json({errors:errors.array()});                        
     }
 
@@ -89,9 +84,6 @@ router.post('/logout', async (req,res) => {
     return;
 });
 
-<<<<<<< HEAD:server/routes/api/posts.js
-=======
 
->>>>>>> origin/master:server/routes/api/users/users.service.js
 // Delete Post
 module.exports = router;

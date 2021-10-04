@@ -1,9 +1,9 @@
 version: '3' 
 services: 
-  dashboard_back:
+  project_SDL_back:
     build: ./server/
     image: "node_back"
-    container_name: "dashboard_back"
+    container_name: "project_SDL_back"
     environment:
       SECRET_TOKEN: YXJtYW5kb2JvbmQ=
     ports: 
@@ -11,19 +11,19 @@ services:
     networks: 
       - back-end
     restart: always 
-  dashboard_db:
+  project_SDL_db:
     image: mongo
-    container_name: "dashboard_db"
+    container_name: "project_SDL_db"
     volumes:
       - ./data-volume:/data/db/
     ports:
       - "27017:27017"
     networks:
       - back-end
-  dashboard_front:
+  project_SDL_front:
     build: ./client/
     image: "react_front"
-    container_name: "dashboard_front"
+    container_name: "project_SDL_front"
     ports: 
       - "8080:8080"
     networks: 
