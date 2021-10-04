@@ -33,7 +33,7 @@ const Login = () => {
                 case 'ok':
                     let accessToken = jwt.sign({"username": User.username}, SecretToken, {algorithm: "HS256", expiresIn: 120});
                     cookie.set('jwt', accessToken, { path: '/' });
-                    history.push('/dashboard');
+                    history.push('/play');
                     break;
                 case 'fail':
                     alert("Error: No account matches.");
