@@ -55,7 +55,7 @@ router.post('/login', [
 ],
 async (req,res) => {
     const errors = validationResult(req);
-    if (!errors.isEmptf71dbe52628a3f83a77ab494817525c6y()) {                                                                   
+    if (!errors.isEmpty()) {                                                                   
         return res.status(400).json({errors:errors.array()});                        
     }
 
