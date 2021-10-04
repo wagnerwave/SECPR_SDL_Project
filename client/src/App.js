@@ -9,6 +9,9 @@ import NotFoundPage from './components/404';
 import ForbidenAccess from './components/403';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import Loading from './components/Loading';
+import LoadingTwitch from './components/LoadingTwitch';
+//import store from './store';
 
 class App extends React.Component {
     render() {
@@ -19,6 +22,8 @@ class App extends React.Component {
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/loading" component={Loading} />
+                    <Route exact path="/loading_twitch" component={LoadingTwitch} />
                     <Route exact path="/404" component={NotFoundPage} />
                     <Route exact path="/403" component={ForbidenAccess} />
                     <Redirect to="404" />
