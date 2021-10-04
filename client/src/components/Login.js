@@ -4,10 +4,6 @@ import { useHistory } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import jwt from "jsonwebtoken";
 
-import GoogleSignIn from './GoogleSignIn';
-import GithubSignIn from './GithubSignIn';
-import TwitchSignIn from './TwitchSignIn';
-
 const Login = () => {
     const SecretToken = "YXJtYW5kb2JvbmQ=";
     const history = useHistory();
@@ -62,9 +58,6 @@ const Login = () => {
                     <a href="/Register">Register page</a>
                 </form>
                 <hr></hr>
-                <GoogleSignIn />
-                <GithubSignIn />
-                <TwitchSignIn />
             </div>
         </Fragment>
     );
