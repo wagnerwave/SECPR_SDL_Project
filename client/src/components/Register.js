@@ -29,6 +29,7 @@ const Register = () => {
             const body = JSON.stringify(newUser);
             const res = await axios.post('http://localhost:3000/register', body, config);
             
+            alert(res.data);
             switch (res.data) {
                 case 'User Registered':
                     history.push('/login');
