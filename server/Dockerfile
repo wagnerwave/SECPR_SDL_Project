@@ -6,10 +6,12 @@ COPY package*.json ./
 
 COPY . .
 
-RUN npm install -g npm@7.24.0
-RUN npm fund --save
-RUN npm i --package-lock-only
-RUN npm audit fix --force
+RUN npm install -g npm@7.24.2 npm-check-updates
+RUN ncu -u
+RUN npm install
+
+RUN npm outdated
+
 
 EXPOSE 3000
 

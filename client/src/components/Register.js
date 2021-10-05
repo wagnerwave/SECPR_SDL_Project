@@ -58,4 +58,8 @@ const Register = () => {
         </Fragment>
 }
 
+//Register.propTypes = {
+//    setAlert: PropTypes.func.isRequired
+//};
+//connect(null,{setAlert})(Register)
 export default Register;
