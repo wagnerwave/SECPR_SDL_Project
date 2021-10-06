@@ -15,8 +15,8 @@
     "jsonwebtoken": "^8.5.1",
     "universal-cookie": "^4.0.4",
     "axios": "^0.22.0",
-    "express-mongo-sanitize": "2.1.0",
-    "xss-filters": "1.2.6"
+    "express-mongo-sanitize": "^2.1.0",
+    "xss-filters": "^1.2.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

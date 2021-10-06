@@ -11,6 +11,11 @@ async function addNewUser(email, username, password) {
         let user = await User.findOne({email: email}).select("email").lean();                                     
         console.log(user);
 
+       /* var sanitize = required('mongo-sanitize');
+        var username = sanitize(username);
+        var email    = sanitize(email);
+        var password = sanitize(password);   */
+
         if (user) {
             console.log("User Already Exists");
             return "User Already Exists";

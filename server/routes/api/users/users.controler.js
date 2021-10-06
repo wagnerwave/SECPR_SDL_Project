@@ -24,11 +24,12 @@ async function registerControler(req, res, next) {
     if (!errors.isEmpty()) {                                                                   
         return res.status(400).send({errors:errors.array()});                        
     }
+    let sanitize = required('mongo-sanitize');
 
-    let email    = req.body.email;
-    let username = req.body.username;
-    let password = req.body.password;
-
+    let email    = sanitize (req.body.email);
+    let username = sanitize (req.body.username);
+    let password = sanitize (req.body.password);
+  
     if (!email) {
       return res.status(HTTP_BAD_REQUEST_CODE).send({"error": "email field is empty"});                        
     }
