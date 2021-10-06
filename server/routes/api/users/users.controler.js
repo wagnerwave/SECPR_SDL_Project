@@ -27,6 +27,8 @@ async function registerControler(req, res, next) {
         return res.status(400).send({errors:errors.array()});                        
     }
     
+    /* First we sanitize inputs from $ signs or attemps to make XSS attacks */
+    
     let email    = sanitize (xssFilters(req.body.email));
     let username = sanitize (xssFilters(req.body.username));
     let password = sanitize (xssFilters(req.body.password));
