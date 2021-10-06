@@ -1,3 +1,4 @@
 {
-    "mongoURI":"mongodb://project_SDL_db:27017/database"
+    "mongoURI":"mongodb://project_SDL_db:27017/database",
+    "secret": "password123"
 }

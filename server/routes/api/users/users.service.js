@@ -1,3 +1,11 @@
+/**
+ * Packages
+ */
+ const jwt = require('jsonwebtoken');
+
+ // Include service functions
+ const config = require('../../../config/default.json');
+ 
 /*
 ** Name of the function : addNewUser
 ** Description : Add a new user in the database
@@ -40,22 +48,24 @@ async function addNewUser(email, username, password) {
 **      -> Success : HTTP code 200 & message User Registered
 **      -> Failure : throw an error, HTTP code 500 
 */
-async function authentifyUser(username, password) {
+async function authentifyUser(user) {
     try {
-        let user = await User.findOne({'username': username, "password": password});                                     
-        console.log(user);
-
-        if (user) {
-            console.log("OK user connected...")
-            return "ok";
-        } else {
-            console.log("fail");
-            return "fail";
+        let payload = {
+            "username": user.username,
+            "role": user.role
         }
-    }
-    catch(err){
+        //console.log("payload is :", payload);
+        // Generate Json Web Token
+        let token = jwt.sign(payload, config.secret, { expiresIn: '7d' });
+        
+        //console.log("generate token is :", token);
+        // Return the generate token
+        return token;
+    } catch(err) {
+
         console.error("Error: " + err.message);
-        throw Error('Server Error');
+        // Return null as error
+        return null;
     }
 }
 

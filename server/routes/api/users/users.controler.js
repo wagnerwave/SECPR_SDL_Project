@@ -1,10 +1,11 @@
 /**
- * Packages
- */
+*** Packages
+**/
 const {validationResult} = require('express-validator');
 
 // Include service functions
 const userService = require('./users.service');
+const User = require('../../../model/Users');
 
 // HTTP STATUS CODE
 const HTTP_BAD_REQUEST_CODE = 400;
@@ -76,16 +77,28 @@ async function loginControler(req, res, next) {
       return res.status(400).json({"error": "password field is empty"});                        
     }
 
-    await userService.authentifyUser(username, password)
-    .then(ok => {
-        console.log(ok)
-        return res.status(HTTP_OK_CODE).send("ok");                        
-      })
-      .catch(err => {
-        console.error(err)
-        return res.status(HTTP_BAD_REQUEST_CODE).send("fail");                        
-      })
-    next();
+    // Get user form the database
+    let user = await User.findOne({"username": username}).select("username").lean();                                     
+    if (!user) {
+      return res.status(HTTP_BAD_REQUEST_CODE).send('fail');                        
+    } else {
+      await userService.authentifyUser(user)
+      .then(response => {
+          // The response is a token
+          // Check if the token is null
+          if (response == null) {
+            return res.status(HTTP_BAD_REQUEST_CODE).send(response);                        
+          } else {
+            // Send the token
+            return res.status(HTTP_OK_CODE).send(response);                        
+          }
+        })
+        .catch(err => {
+          console.error(err)
+          return res.status(HTTP_BAD_REQUEST_CODE).send("fail");                        
+        })
+      next();  
+    }
 }
 
 module.exports = {

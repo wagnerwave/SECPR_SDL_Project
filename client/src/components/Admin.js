@@ -1,39 +1,51 @@
 import React from "react";
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import jwt from "jsonwebtoken";
-
+import jwt from 'jsonwebtoken'
 
 const Admin = () => {
 
-    const SecretToken = "YXJtYW5kb2JvbmQ=";
-    const history = useHistory();
-    const cookies = new Cookies();
+   const history = useHistory();
+   const cookies = new Cookies();
 
-    const clearCookies = async e => { cookies.set("jwt", '') };
-    try {
-        let accessToken = cookies.get('jwt');
-        if (!accessToken)
-            history.push("/403");
-        let data = jwt.verify(accessToken, SecretToken, 
-            (err) => {
-            if (err) history.push("/403");
-        });
-        console.log("INFO:", data);
-    } catch(e) {
-        console.error(e);
+   try {
+        React.useEffect( async () => {
+            const config = { headers: { 'Content-Type':'application/json' } };
+            
+            const token = cookies.get('jwt');
+            const jwtCookie = { token };
+
+            const body = JSON.stringify(jwtCookie);
+            console.log(body);
+            const res = await axios.post('http://localhost:3000/verify-jwt', body, config);    
+            
+            console.log(res.data);
+            switch (res.data) {
+             case 'fail':
+                 history.push('/dashboard');
+                 break;
+             default:
+                // use function jwt.decode to check if the jwt have the role of admin but only if the token is valid
+                 var role = jwt.decode(cookies.get('jwt'))
+                 alert(role.payload)
+                 break;
+              }                    
+        
+        }, []);   
+    } catch(err) {
+      console.error(err.response.data);
     }
+    
 
-    return (
+   return (
         <div>
-            <div class="topnav" id="myTopnav">
-                <a href="/login" id="logout-button" class="active" clearCookies={e => clearCookies(e)}>Logout</a>
-            </div>
+            <Navbar/>
             <div>
                 <h1>Hello admin</h1>
             </div>
-        </div>
-    );
-}
+            </div>
+        );
+    }
 
 export default Admin;

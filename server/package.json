@@ -1,5 +1,5 @@
 {
-  "name": "test_mern",
+  "name": "project-sdl-backend-packages",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "config": "^3.3.6",
     "express": "^4.17.1",
     "express-validator": "^6.12.2",
-    "mongodb": "^4.1.2",
+    "mongodb": "^4.1.3",
     "mongoose": "^6.0.9",
     "cors": "^2.8.5",
     "md5": "^2.3.0",

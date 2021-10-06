@@ -1,7 +1,6 @@
 import React,{Fragment,useState} from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'
-//import {setAlert} from '../actions/alert';
 
 const Register = () => {
     const history = useHistory();
@@ -29,7 +28,6 @@ const Register = () => {
             const body = JSON.stringify(newUser);
             const res = await axios.post('http://localhost:3000/register', body, config);
             
-            alert(res.data);
             switch (res.data) {
                 case 'User Registered':
                     history.push('/login');
@@ -39,7 +37,7 @@ const Register = () => {
                     break;    
                 default:
                     break;
-            }   
+                }
         } catch(err) {
             console.error(err.response.data);
         }

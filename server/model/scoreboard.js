@@ -7,7 +7,6 @@ const ScoreboardSchema = new mongoose.Schema({
         "id": original_id,
         type: String,
         required: true,
-        unique:true
     },
     scoreboard:{
         "id": original_id,
