@@ -2,6 +2,8 @@
  * Packages
  */
 const {validationResult} = require('express-validator');
+let sanitize = required('mongo-sanitize');
+let xssFilters = require('xss-filters');
 
 // Include service functions
 const userService = require('./users.service');
@@ -24,11 +26,10 @@ async function registerControler(req, res, next) {
     if (!errors.isEmpty()) {                                                                   
         return res.status(400).send({errors:errors.array()});                        
     }
-    let sanitize = required('mongo-sanitize');
-
-    let email    = sanitize (req.body.email);
-    let username = sanitize (req.body.username);
-    let password = sanitize (req.body.password);
+    
+    let email    = sanitize (xssFilters(req.body.email));
+    let username = sanitize (xssFilters(req.body.username));
+    let password = sanitize (xssFilters(req.body.password));
   
     if (!email) {
       return res.status(HTTP_BAD_REQUEST_CODE).send({"error": "email field is empty"});                        
