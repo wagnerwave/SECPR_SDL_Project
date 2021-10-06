@@ -27,13 +27,13 @@ async function registerControler(req, res, next) {
     if (!errors.isEmpty()) {                                                                   
         return res.status(400).send({errors:errors.array()});                        
     }
-    
+
     /* First we sanitize inputs from $ signs or attemps to make XSS attacks */
     
     let email    = sanitize (xssFilters(req.body.email));
     let username = sanitize (xssFilters(req.body.username));
     let password = sanitize (xssFilters(req.body.password));
-  
+
     if (!email) {
       return res.status(HTTP_BAD_REQUEST_CODE).send({"error": "email field is empty"});                        
     }
@@ -108,4 +108,4 @@ async function loginControler(req, res, next) {
 module.exports = {
     registerControler,
     loginControler
-}
+} 
