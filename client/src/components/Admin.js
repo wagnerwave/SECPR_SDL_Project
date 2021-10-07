@@ -2,7 +2,9 @@ import React from "react";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
+
+import Navbar from './Navbar';
 
 const Admin = () => {
 
