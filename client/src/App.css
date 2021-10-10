@@ -1,10 +1,16 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background: #194F92;
+html {
+  height: 100%;
 }
 
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background: url('./img/stars.png'), linear-gradient(#2b1055, #7597de);
+}
 
 /* BOX */
 .box {
@@ -69,7 +75,7 @@ body {
 
 .topnav {
     overflow: hidden;
-    background-color:#060605;
+    /* background-color:#2b1055; */
   }
   
   .topnav h1 {
@@ -95,13 +101,13 @@ body {
   }
   
   .topnav a:hover {
-    background-color: white;
+    /* background-color: white; */
     color: black;
   }
   
   .topnav a.active {
-    border: #060605;
-    background-color: #194F92;
+    /* border: #060605; */
+    /* background-color: #194F92; */
     color: white;
   }
   
@@ -183,4 +189,20 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+#title p {
+  font-size: 20px;
+}
+
+#content p {
+  font-size: 15px;
+}
+
+#username p {
+  font-size: 10px;
+}
+
+#datetime p {
+  font-size: 10px;
 }
