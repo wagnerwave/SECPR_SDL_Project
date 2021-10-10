@@ -1,17 +1,19 @@
 import React from "react";
-import { useHistory } from 'react-router-dom';
 
 const ForbidenAccess = () => {
-    const history = useHistory();
-
-    setTimeout(5000); 
-    history.push("/login");
-
+    alert("ERROR : 403 ACCESS FORBIDEN");
     return (
         <div>
             <center>
                 <h1>403 Forbiden access.</h1>
                 <p>You will be redirected...</p>
+                <hr></hr>
+                <a href="/login">
+                    <button type="button">Go back to Login</button>
+                </a>
+                <a href="/dashboard">
+                    <button type="button">Go back to the dashboard</button>
+                </a>
             </center>
         </div>
     );

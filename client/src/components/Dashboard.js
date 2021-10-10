@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from 'react-router-dom';
 import jwt from "jsonwebtoken";
 import { Card } from 'react-bootstrap';
+import axios from "axios";
 
 import Navbar from './Navbar';
 

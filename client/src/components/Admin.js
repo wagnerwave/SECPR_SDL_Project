@@ -1,52 +1,45 @@
-import React from "react";
+import React , { useEffect,  useState } from "react";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import jwt from 'jsonwebtoken';
 
 import Navbar from './Navbar';
+import ForbidenAccess from './403';
+import AdminPage from './AdminPage';
 
 const Admin = () => {
-
-   const history = useHistory();
-   const cookies = new Cookies();
-
-   try {
-        React.useEffect( async () => {
-            const config = { headers: { 'Content-Type':'application/json' } };
-            
-            const token = cookies.get('jwt');
-            const jwtCookie = { token };
-
-            const body = JSON.stringify(jwtCookie);
-            console.log(body);
-            const res = await axios.post('http://localhost:3000/verify-jwt', body, config);    
-            
-            console.log("back-end response: " + res.data);
-            switch (res.data) {     
-             case 'fail':
-                 history.push('/dashboard');
-                 break;
-             default:
-                // use function jwt.decode to check if the jwt have the role of admin but only if the token is valid
-                 var role = jwt.decode(cookies.get('jwt'))
-                 console.log(role);
-                 break;
-              }
-        }, []);   
-    } catch(err) {
-      console.error(err.response.data);
-    }
+    let [role, setRole] = useState("");
     
+    const cookies = new Cookies();
+    const history = useHistory();
+
+    useEffect(async () => {
+        const config = { 
+            headers: { 
+            "Access-Control-Allow-Origin": "*", 
+            "Content-Type": "application/json" 
+            } 
+        };
+
+        const token = cookies.get('jwt');
+        const jwtCookie = { token };
+        const body = JSON.stringify({"token": jwtCookie.token});
+        
+        await axios.post('http://localhost:3000/check-admin-access', body, config)
+        .then(response => {
+            role = response.data.jwt;
+        })
+        .catch(err => {
+            console.log("Error: ", err);
+        })
+    }, []);
 
    return (
         <div>
             <Navbar/>
-            <div>
-                <h1>Hello admin</h1>
-            </div>
-            </div>
+            {(role == "user") ? ( <AdminPage /> ) : ( <ForbidenAccess /> )}
+        </div>
         );
-    }
+}
 
 export default Admin;
