@@ -12,7 +12,7 @@ const app = express();
 connectDB();
 
 app.use(bodyParser.json());
-app.use(express.json({extended: false}));
+app.use(express.json());
 app.use(cors());
 
 app.use(function(req, res, next) {

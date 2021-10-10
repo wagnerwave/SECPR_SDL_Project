@@ -2,7 +2,7 @@
   "name": "test_mern",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "App.js",
   "dependencies": {
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.2.1",
@@ -18,7 +18,7 @@
     "redux-thunk": "^2.3.0",
     "jsonwebtoken": "^8.5.1",
     "styled-components": "^5.3.1",
-    "web-vitals": "^2.1.0",
+    "web-vitals": "^2.1.1",
     "express-mongo-sanitize": "^2.1.0",
     "xss-filters": "^1.2.7"
   },

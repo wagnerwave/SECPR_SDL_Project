@@ -22,18 +22,17 @@ const Admin = () => {
             console.log(body);
             const res = await axios.post('http://localhost:3000/verify-jwt', body, config);    
             
-            console.log(res.data);
-            switch (res.data) {
+            console.log("back-end response: " + res.data);
+            switch (res.data) {     
              case 'fail':
                  history.push('/dashboard');
                  break;
              default:
                 // use function jwt.decode to check if the jwt have the role of admin but only if the token is valid
                  var role = jwt.decode(cookies.get('jwt'))
-                 alert(role.payload)
+                 console.log(role);
                  break;
-              }                    
-        
+              }
         }, []);   
     } catch(err) {
       console.error(err.response.data);

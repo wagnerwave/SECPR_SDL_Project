@@ -9,6 +9,7 @@ const User = require('../../../model/Users');
 
 // HTTP STATUS CODE
 const HTTP_BAD_REQUEST_CODE = 400;
+const HTTP_FORBIDDEN_CODE   = 403;
 const HTTP_OK_CODE          = 200;
 
 /**
@@ -19,7 +20,6 @@ const HTTP_OK_CODE          = 200;
  * @returns res
  */
 async function createJWTControler(req, res, next) {
-    console.log()
     const errors = validationResult(req);
     
     if (!errors.isEmpty()) {                                                                   
@@ -77,7 +77,29 @@ async function verifyJWTControler(req, res, next)   {
     next();
 }
 
+async function verifyAdminJWTControler(req, res, next)   {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {                                                                   
+      return res.status(400).send('fail');                        
+  }
+
+  let token = req.body.token;
+
+  await jwtService.verifyAdminJSONBWebToken(token)
+  .then(ok => {
+  console.log("After Add new user function : ", ok)
+  return res.status(HTTP_OK_CODE).send('ok');                        
+  })
+  .catch(err => {
+    console.error("After Add new user function : ", err)
+    return res.status(HTTP_FORBIDDEN_CODE).send('fail');                        
+  })
+  next();
+}
+
 module.exports = {
     createJWTControler,
-    verifyJWTControler
+    verifyJWTControler,
+    verifyAdminJWTControler
 }

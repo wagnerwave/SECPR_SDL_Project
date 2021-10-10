@@ -1,4 +1,5 @@
 {
     "mongoURI":"mongodb://project_SDL_db:27017/database",
-    "secret": "password123"
+    "secret": "password123",
+    "secretSalt": "a0105e7bfbc6192040f0257bee47cece50692cbafb2b13fcee75652ad5a2179e"
 }

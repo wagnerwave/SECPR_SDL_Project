@@ -26,7 +26,6 @@ router.post('/logout', async (req,res) => {
 /**
  * Request for check if the backend works
  */
-router.post('/status', statusService.status);
 router.get('/status', statusService.status);
 
 /**

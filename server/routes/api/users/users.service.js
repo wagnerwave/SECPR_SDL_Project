@@ -1,11 +1,13 @@
 /**
  * Packages
  */
- const jwt = require('jsonwebtoken');
+ const jwt          = require("jsonwebtoken");
+ const crypto       = require("crypto");
 
  // Include service functions
- const config = require('../../../config/default.json');
- 
+ const config       = require("../../../config/default.json");
+ const User         = require("../../../model/Users");
+
 /*
 ** Name of the function : addNewUser
 ** Description : Add a new user in the database
@@ -17,7 +19,7 @@
 async function addNewUser(email, username, password) {
     try {        
         let user = await User.findOne({email: email}).select("email").lean();                                     
-        console.log(user);
+        console.log("Return user find .. or not :", user);
 
         if (user) {
             console.log("User Already Exists");
@@ -26,17 +28,18 @@ async function addNewUser(email, username, password) {
             newUser = new User({
                     email,
                     username,
+                    role: "user",
                     password
                 });
             console.log("New User Created." + "[" + email + "-" + username + "-" + password+ "]");
             await newUser.save(); 
-            console.log('User Registered');
+            console.log("User Registered");
             return "User Registered";
         }
     }
     catch(err){
         console.error("Error: " + err.message);
-        throw Error('Server Error');
+        throw Error("Server Error");
     }
 }
 
@@ -48,28 +51,48 @@ async function addNewUser(email, username, password) {
 **      -> Success : HTTP code 200 & message User Registered
 **      -> Failure : throw an error, HTTP code 500 
 */
-async function authentifyUser(user) {
+async function generateToken(user) {
     try {
         let payload = {
             "username": user.username,
-            "role": user.role
+            "role": "user"
         }
-        //console.log("payload is :", payload);
+        console.log("payload is :", payload);
         // Generate Json Web Token
         let token = jwt.sign(payload, config.secret, { expiresIn: '7d' });
         
-        //console.log("generate token is :", token);
+        console.log("generate token is :", token);
+        var i = jwt.verify(token, config.secret);
+        console.log("Return of verify :", i);
+        var role = jwt.decode(token);
+        console.log(role);
         // Return the generate token
         return token;
     } catch(err) {
-
         console.error("Error: " + err.message);
         // Return null as error
-        return null;
+        throw Error(null);
     }
 }
 
+/**
+ * 
+ * @param {*} token
+ */
+async function authenticateToken(token) {
+    try {
+    const token = jwt.verify(token, config.secret)
+    return token; 
+    } catch(err) {
+        console.error("Error: " + err.message);
+        // Return null as error
+        throw Error(null);
+    }
+}
+
+
 module.exports = {
     addNewUser,
-    authentifyUser
+    generateToken,
+    authenticateToken
 }
