@@ -34,11 +34,11 @@ async function createJWTControler(req, res, next) {
     if (!user) {
       return res.status(HTTP_BAD_REQUEST_CODE).send('fail');                        
     } else {
-      console.log("Username is egal to :", user.username);
+      //console.log("Username is egal to :", user.username);
       // Generate the Json Web Token 
       await jwtService.generateJwtToken(user)
       .then(token => {
-          console.log("Token generated : ", token)
+          //console.log("Token generated : ", token)
           return res.status(HTTP_OK_CODE).send(token);                        
         })
         .catch(err => {
@@ -67,7 +67,7 @@ async function verifyJWTControler(req, res, next)   {
 
     await jwtService.verifyJSONBWebToken(token)
     .then(ok => {
-    console.log("After Add new user function : ", ok)
+    //console.log("After Add new user function : ", ok)
     return res.status(HTTP_OK_CODE).send('ok');                        
     })
     .catch(err => {
@@ -77,22 +77,34 @@ async function verifyJWTControler(req, res, next)   {
     next();
 }
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns 
+ */
 async function verifyAdminJWTControler(req, res, next)   {
   const errors = validationResult(req);
 
-  if (!errors.isEmpty()) {                                                                   
-      return res.status(400).send('fail');                        
+  if (!errors.isEmpty()) {                                                   
+      return res.status(400).send('fail');                    
   }
 
   let token = req.body.token;
-
+  //console.log("Token get by the requ  est is : ", req.body);
   await jwtService.verifyAdminJSONBWebToken(token)
-  .then(ok => {
-  console.log("After Add new user function : ", ok)
-  return res.status(HTTP_OK_CODE).send('ok');                        
+  .then(response => {
+    //console.log(response);
+    if (response != 'fail') {
+      return res.status(HTTP_OK_CODE).json({"jwt": response});
+    } else {
+      return res.status(HTTP_FORBIDDEN_CODE).send('fail');                        
+    }
   })
   .catch(err => {
-    console.error("After Add new user function : ", err)
+    //console.log("After Add new user function : ", err)
+
     return res.status(HTTP_FORBIDDEN_CODE).send('fail');                        
   })
   next();

@@ -57,15 +57,15 @@ async function generateToken(user) {
             "username": user.username,
             "role": "user"
         }
-        console.log("payload is :", payload);
+        //console.log("payload is :", payload);
         // Generate Json Web Token
         let token = jwt.sign(payload, config.secret, { expiresIn: '7d' });
         
-        console.log("generate token is :", token);
+        //console.log("generate token is :", token);
         var i = jwt.verify(token, config.secret);
-        console.log("Return of verify :", i);
+        //console.log("Return of verify :", i);
         var role = jwt.decode(token);
-        console.log(role);
+        //console.log(role);
         // Return the generate token
         return token;
     } catch(err) {
