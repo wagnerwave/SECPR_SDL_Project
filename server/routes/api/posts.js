@@ -31,7 +31,7 @@ router.get('/status', statusService.status);
 /**
  * Manage Json Web Token
  */
-router.post('/check-admin-access', jwtControler.verifyAdminJWTControler);
+router.post('/check-access', jwtControler.verifyJWTControler);
 
 // Delete Post
 module.exports = router;

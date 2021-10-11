@@ -50,41 +50,13 @@ async function createJWTControler(req, res, next) {
   }
 
 /**
- * Verify if the JSON Web Token is valid or not
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
- * @returns 
- */
-async function verifyJWTControler(req, res, next)   {
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {                                                                   
-        return res.status(400).send('fail');                        
-    }
-
-    let token = req.body.token;
-
-    await jwtService.verifyJSONBWebToken(token)
-    .then(ok => {
-    //console.log("After Add new user function : ", ok)
-    return res.status(HTTP_OK_CODE).send('ok');                        
-    })
-    .catch(err => {
-      console.error("After Add new user function : ", err)
-      return res.status(HTTP_BAD_REQUEST_CODE).send('fail');                        
-    })
-    next();
-}
-
-/**
  * 
  * @param {*} req 
  * @param {*} res 
  * @param {*} next 
  * @returns 
  */
-async function verifyAdminJWTControler(req, res, next)   {
+async function verifyJWTControler(req, res, next)   {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {                                                   
@@ -93,7 +65,7 @@ async function verifyAdminJWTControler(req, res, next)   {
 
   let token = req.body.token;
   //console.log("Token get by the requ  est is : ", req.body);
-  await jwtService.verifyAdminJSONBWebToken(token)
+  await jwtService.verifyJSONBWebToken(token)
   .then(response => {
     //console.log(response);
     if (response != 'fail') {
@@ -112,6 +84,5 @@ async function verifyAdminJWTControler(req, res, next)   {
 
 module.exports = {
     createJWTControler,
-    verifyJWTControler,
-    verifyAdminJWTControler
+    verifyJWTControler
 }

@@ -8,7 +8,7 @@ const config = require('../../../config/default.json');
 
 module.exports = {
     generateJwtToken,
-    verifyAdminJSONBWebToken
+    verifyJSONBWebToken
 }
 
 async function generateJwtToken(user) {
@@ -29,7 +29,7 @@ async function generateJwtToken(user) {
     }
 }
 
-async function verifyAdminJSONBWebToken(Token) {
+async function verifyJSONBWebToken(Token) {
     try {
         //console.log("Token is egal to :", Token);
         let tokenData = jwt.verify(Token, config.secret);
