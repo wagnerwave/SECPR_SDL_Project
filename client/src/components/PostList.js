@@ -4,8 +4,6 @@ import { Card, Row, Col }                     from 'react-bootstrap';
 import axios                        from "axios";
 import Cookies                      from 'universal-cookie';
 
-import Navbar                       from './Navbar';
-
 const PostList = () => { 
     
     const cookies = new Cookies();
@@ -34,13 +32,6 @@ const PostList = () => {
             })
     }, []);
 
-    function clickPost(postId) {
-        console.log(postId)
-        // return(
-        //     // <Link to={"/"+postId}/>
-        // )
-    }
-    console.log(postData)
     return (  
         <div id="post-div">
             <Row xs={1} md={2} className="g-4">

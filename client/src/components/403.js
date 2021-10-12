@@ -6,7 +6,7 @@ const ForbidenAccess = () => {
         <div>
             <center>
                 <h1>403 Forbiden access.</h1>
-                <p>You will be redirected...</p>
+                <p>Nothing for you here..</p>
                 <hr></hr>
                 <a href="/login">
                     <button type="button">Go back to Login</button>
