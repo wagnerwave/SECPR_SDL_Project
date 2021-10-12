@@ -7,23 +7,25 @@ import Cookies                      from 'universal-cookie';
 import Navbar                       from './Navbar';
 import Write                        from "./Write";
 
-const Dashboard = () => {  
+const Dashboard = () => { 
+    
+    const cookies = new Cookies();
+    const history = useHistory();
+    
+    const config = { 
+        headers: { 
+        "Access-Control-Allow-Origin": "*", 
+        "Content-Type": "application/json" 
+        } 
+    };
+    const token = cookies.get('jwt');
+    const jwtCookie = { token };
+    const body = JSON.stringify({"token": jwtCookie.token});
+
+
     var postData = useState([]);
 
     useEffect(async() => {
-            const cookies = new Cookies();
-            const history = useHistory();
-            
-            const config = { 
-                headers: { 
-                "Access-Control-Allow-Origin": "*", 
-                "Content-Type": "application/json" 
-                } 
-            };
-            const token = cookies.get('jwt');
-            const jwtCookie = { token };
-            const body = JSON.stringify({"token": jwtCookie.token});
-
            await axios.get('http://localhost:3000/posts/get-all', body, config)
             .then(response => {
                 postData = response.data;
@@ -33,7 +35,8 @@ const Dashboard = () => {
             })
     }, []);
 
-    return (
+    console.log(postData);
+    return (  
         <div>
             <Navbar/>
             <Write />
