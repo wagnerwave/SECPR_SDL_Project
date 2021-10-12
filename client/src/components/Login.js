@@ -1,7 +1,7 @@
-import React,{Fragment,useState} from 'react';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
-import Cookies from 'universal-cookie';
+import React, {Fragment,useState} from 'react';
+import axios                      from 'axios';
+import { useHistory }             from 'react-router-dom';
+import Cookies                    from 'universal-cookie';
 
 const Login = () => {
     const history = useHistory();

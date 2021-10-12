@@ -4,8 +4,6 @@ services:
     build: ./server/
     image: "node_back"
     container_name: "project_SDL_back"
-    environment:
-      SECRET_TOKEN: YXJtYW5kb2JvbmQ=
     ports: 
       - "3000:3000"
     networks: 

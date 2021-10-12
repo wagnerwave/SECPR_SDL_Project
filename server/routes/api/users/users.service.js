@@ -1,12 +1,12 @@
 /**
  * Packages
  */
- const jwt          = require("jsonwebtoken");
- const crypto       = require("crypto");
+const jwt          = require("jsonwebtoken");
+const crypto       = require("crypto");
 
- // Include service functions
- const config       = require("../../../config/default.json");
- const User         = require("../../../model/Users");
+// Include service functions
+const config       = require("../../../config/default.json");
+const User         = require("../../../model/Users");
 
 /*
 ** Name of the function : addNewUser
@@ -60,13 +60,6 @@ async function generateToken(user) {
         //console.log("payload is :", payload);
         // Generate Json Web Token
         let token = jwt.sign(payload, config.secret, { expiresIn: '7d' });
-        
-        //console.log("generate token is :", token);
-        var i = jwt.verify(token, config.secret);
-        //console.log("Return of verify :", i);
-        var role = jwt.decode(token);
-        //console.log(role);
-        // Return the generate token
         return token;
     } catch(err) {
         console.error("Error: " + err.message);
@@ -81,15 +74,16 @@ async function generateToken(user) {
  */
 async function authenticateToken(token) {
     try {
-    const token = jwt.verify(token, config.secret)
-    return token; 
+        let verifyToken = jwt.verify(token, config.secret, (err) => {
+            if (err) return null
+        })
+        return verifyToken;
     } catch(err) {
         console.error("Error: " + err.message);
         // Return null as error
         throw Error(null);
     }
 }
-
 
 module.exports = {
     addNewUser,

@@ -19,7 +19,7 @@
     "redux-thunk": "^2.3.0",
     "jsonwebtoken": "^8.5.1",
     "styled-components": "^5.3.1",
-    "web-vitals": "^2.1.1",
+    "web-vitals": "^2.1.2",
     "express-mongo-sanitize": "^2.1.0",
     "xss-filters": "^1.2.7"
   },

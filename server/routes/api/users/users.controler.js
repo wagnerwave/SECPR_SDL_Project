@@ -110,7 +110,7 @@ async function loginControler(req, res, next) {
 }
 
 async function tokenControler(req, res, next) {
-	const authHeader = req.headers['authorization'];
+	  const authHeader = req.headers['authorization'];
   	// Get the token present in the headers authorization
   	const token = authHeader & authHeader.split(' ')[1]; 
 

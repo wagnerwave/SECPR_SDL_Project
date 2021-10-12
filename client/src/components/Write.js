@@ -2,10 +2,9 @@ import React,{Fragment,useState} from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import jwt from "jsonwebtoken";
-
+import jwt from 'jsonwebtoken';
+ 
 const Write = () => {
-    const SecretToken = "YXJtYW5kb2JvbmQ=";
     const history = useHistory();
     const cookie = new Cookies();
 
@@ -19,28 +18,22 @@ const Write = () => {
     const onSubmit = async e => {
         e.preventDefault();
 
+        jwt.decode();
+
+        const token = cookie.get('jwt');
+        const jwtCookie = { token };
+
+        let payload = jwt.decode(jwtCookie.token);
+        let username = payload.username;
         const Post = {
             title,
-            content
+            content,
+            username
         };
-    
         try {
             const config = { headers: { 'Content-Type':'application/json' } };
             const body = JSON.stringify(Post);
-            const res = await axios.post('http://localhost:3000/login', body, config);
-            
-            switch (res.data) {
-                case 'ok':
-                    let accessToken = jwt.sign({"title": Post.title, "role": "user"}, SecretToken, {algorithm: "HS256", expiresIn: 120});
-                    cookie.set('jwt', accessToken, { path: '/' });
-                    history.push('/dashboard');
-                    break;
-                case 'fail':
-                    alert("Error: No account matches.");
-                    break;
-                default:
-                    break;
-            }
+            const res = await axios.post('http://localhost:3000/posts/publish', body, config);
         } catch(err) {
             console.error(err);
         }

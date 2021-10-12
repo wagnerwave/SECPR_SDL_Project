@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use('/', require('./routes/api/posts'));
+app.use('/', require('./routes/api/route'));
 
 // Port listening
 const hostname = '0.0.0.0';
