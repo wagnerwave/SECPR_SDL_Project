@@ -15,8 +15,8 @@ export default class Navbar extends Component {
     render() {
         return(
             <div>
-                <div class="topnav" id="myTopnav">
-                <a href="/login" id="logout-button" class="active" onClick={this.clearCookies} >Logout</a>
+                <div className="topnav" id="myTopnav">
+                <a href="/login" id="logout-button" className="active" onClick={this.clearCookies} >Logout</a>
                 </div>
             </div>
         )

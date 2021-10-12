@@ -34,6 +34,7 @@ const Write = () => {
             const config = { headers: { 'Content-Type':'application/json' } };
             const body = JSON.stringify(Post);
             const res = await axios.post('http://localhost:3000/posts/publish', body, config);
+            history.push('/dashboard');
         } catch(err) {
             console.error(err);
         }
@@ -41,7 +42,7 @@ const Write = () => {
 
     return (
         <Fragment>
-            <div class="box">
+            <div className="box">
                 <form onSubmit={e => onSubmit(e)}>
                     <h1>Share Your Idea!</h1>
                     <input type="text" name="title" placeholder="Title" id="title" value={title} onChange={e => onChange(e)}required/>

@@ -12,6 +12,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Admin from './components/Admin';
 import Write from './components/Write';
+import Post from './components/Post';
 
 class App extends React.Component {
     render() {
@@ -23,6 +24,7 @@ class App extends React.Component {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/write" component={Write} />
+                    <Route exact path="/post" component={Post} />
                     <Route exact path="/admin" component={Admin} />
                     <Route exact path="/404" component={NotFoundPage} />
                     <Route exact path="/403" component={ForbidenAccess} />
