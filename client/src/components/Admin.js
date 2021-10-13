@@ -24,21 +24,23 @@ const Admin = () => {
         const token = cookies.get('jwt');
         const jwtCookie = { token };
         const body = JSON.stringify({"token": jwtCookie.token});
-        
+        console.log(body);
         await axios.post('http://localhost:3000/check-access', body, config)
         .then(response => {
             role = response.data.jwt;
+            setRole(response.data.jwt)
             console.log(role);
         })
         .catch(err => {
             console.log("Error: ", err);
+            history.push("/403");
         })
     }, []);
 
    return (
         <div>
             <Navbar/>
-            {(role == "user") ? ( <AdminPage /> ) : ( <ForbidenAccess /> )}
+            { (role == "user") ? ( <ForbidenAccess /> ) : ( <AdminPage /> )}
         </div>
         );
 }

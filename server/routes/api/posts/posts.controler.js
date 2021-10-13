@@ -23,10 +23,6 @@ const HTTP_CREATED_CODE      = 201;
 async function getAllPostsControler(req, res) {
     console.log(req);
 
-    //jwt.verify(userToken, config.secret, (err, user) => {
-    //    if (err) return res.status(HTTP_BAD_REQUEST_CODE).send("Error");
-    //});
-
     let allPosts = await Post.find();
     console.log("All posts is egal to :", allPosts);
     res.setHeader("Content-Type", "application/json");
@@ -34,10 +30,10 @@ async function getAllPostsControler(req, res) {
 }
 
 /**
- * 
- * @param {*} req  
- * @param {*} res  
- * @param {*} next 
+ *                  
+ * @param {*} req   
+ * @param {*} res   
+ * @param {*} next  
  */
 async function publishPostControler(req, res, next) {
     let title = req.body.title;

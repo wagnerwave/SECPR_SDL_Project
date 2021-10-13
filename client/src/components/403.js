@@ -1,7 +1,6 @@
 import React from "react";
 
 const ForbidenAccess = () => {
-    alert("ERROR : 403 ACCESS FORBIDEN");
     return (
         <div>
             <center>

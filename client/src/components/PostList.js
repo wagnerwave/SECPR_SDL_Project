@@ -21,15 +21,26 @@ const PostList = () => {
 
 
     const [postData, setPostData] = useState([]);
+    const [postRole, setRole] = useState("");
+
     
     useEffect(async() => {
-           await axios.get('http://localhost:3000/posts/get-all', body, config)
-            .then(response => {
-                setPostData(response.data);
-            })
-            .catch(err => {
-                console.error("Error:", err);
-            })
+        await axios.post('http://localhost:3000/check-access', body, config)
+        .then(response => {
+            setRole(response.data.jwt);
+        })
+        .catch(err => {
+            console.error("Error:", err);
+            history.push("/login");
+        })        
+
+        await axios.get('http://localhost:3000/posts/get-all', body, config)
+        .then(response => {
+            setPostData(response.data);
+        })
+        .catch(err => {
+            console.error("Error:", err);
+        })
     }, []);
 
     return (  

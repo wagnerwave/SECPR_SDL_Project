@@ -110,16 +110,17 @@ async function loginControler(req, res, next) {
 }
 
 async function tokenControler(req, res, next) {
-	  const authHeader = req.headers['authorization'];
-  	// Get the token present in the headers authorization
-  	const token = authHeader & authHeader.split(' ')[1]; 
-
-  	if (token == null) {
-    	return res.status(HTTP_UNAUTHORIZED_CODE);
-  	}
+	  //const authHeader = req.headers['authorization'];
+  	//// Get the token present in the headers authorization
+  	//const token = authHeader & authHeader.split(' ')[1]; 
+    //
+  	//if (token == null) {
+    //	return res.status(HTTP_UNAUTHORIZED_CODE);
+  	//}
 
   	await userService.authenticateToken(token)
   	.then(response => {
+      console.log("Response :", response);
   	  if (response == null) {
   	    return res.status(HTTP_BAD_REQUEST_CODE).send("fail");                        
   	  } else {
@@ -128,7 +129,7 @@ async function tokenControler(req, res, next) {
   	  }
   	})
   	.catch(err => {
-  	  console.error(err)
+  	  console.error(err.message)
   	  return res.status(HTTP_BAD_REQUEST_CODE).send("fail");                        
   	})
   	next();  
