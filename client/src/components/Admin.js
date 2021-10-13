@@ -38,7 +38,7 @@ const Admin = () => {
    return (
         <div>
             <Navbar/>
-            {(role == "user") ? ( <ForbidenAccess /> ) : ( <AdminPage /> )}
+            {(role == "user") ? ( <AdminPage /> ) : ( <ForbidenAccess /> )}
         </div>
         );
 }
