@@ -25,7 +25,7 @@ const PostList = () => {
 
     
     useEffect(async() => {
-        await axios.post('http://localhost:3000/check-access', body, config)
+        await axios.post('http://0.0.0.0:3000/check-access', body, config)
         .then(response => {
             setRole(response.data.jwt);
         })
@@ -34,7 +34,7 @@ const PostList = () => {
             history.push("/login");
         })        
 
-        await axios.get('http://localhost:3000/posts/get-all', body, config)
+        await axios.get('http://0.0.0.0:3000/posts/get-all', body, config)
         .then(response => {
             setPostData(response.data);
         })

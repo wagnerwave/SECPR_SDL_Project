@@ -26,7 +26,7 @@ const Register = () => {
         try {
             const config = { headers: { 'Content-Type':'application/json' } };
             const body = JSON.stringify(newUser);
-            const res = await axios.post('http://localhost:3000/register', body, config);
+            const res = await axios.post('http://0.0.0.0:3000/register', body, config);
             
             switch (res.data) {
                 case 'User Registered':
