@@ -33,7 +33,7 @@ const Write = () => {
         try {
             const config = { headers: { 'Content-Type':'application/json' } };
             const body = JSON.stringify(Post);
-            const res = await axios.post('https://node-back-wghvb3pvea-uc.a.run.app/posts/publish', body, config);
+            const res = await axios.post('http://0.0.0.0:3000/posts/publish', body, config);
             history.push('/dashboard');
         } catch(err) {
             console.error(err);

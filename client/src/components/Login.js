@@ -24,7 +24,7 @@ const Login = () => {
     
         const config = { headers: { 'Content-Type':'application/json' } };
         const body = JSON.stringify(User);
-        const res = await axios.post('https://node-back-wghvb3pvea-uc.a.run.app/login', body, config);
+        const res = await axios.post('http://0.0.0.0:3000/login', body, config);
         
         const jwtoken = res.data;
         if (jwtoken) {
