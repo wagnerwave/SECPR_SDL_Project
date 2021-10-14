@@ -25,7 +25,7 @@ const Admin = () => {
         const jwtCookie = { token };
         const body = JSON.stringify({"token": jwtCookie.token});
         console.log(body);
-        await axios.post('http://localhost:3000/check-access', body, config)
+        await axios.post('https://node-back-wghvb3pvea-uc.a.run.app/check-access', body, config)
         .then(response => {
             role = response.data.jwt;
             setRole(response.data.jwt)
